@@ -1,0 +1,24 @@
+{
+  "name": "fe53-wildberries",
+  "version": "1.0.0",
+  "description": "teamwork",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariNists/FE53-Wildberries.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariNists/FE53-Wildberries/issues"
+  },
+  "homepage": "https://github.com/MariNists/FE53-Wildberries#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.2",
+    "parcel": "^2.10.2"
+  }
+}

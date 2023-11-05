@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+@import "../scss/variables";
+@import "../scss/mixins";
+@import "../scss/cdn";
+@import "../scss/header.scss";
+@import "../scss/advertising.scss";
+@import "../scss/main.scss";
+
+html {
+    font-family: "Mukta", sans-serif;
+}
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 24px;
+}

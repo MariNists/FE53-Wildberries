@@ -1,0 +1,32 @@
+@mixin logo {
+    color: $white;
+    font-family: "Mukta";
+    font-size: $_60px;
+    font-weight: 400; 
+}
+@mixin logo-basket {
+    color: $white;
+    font-family: "Mukta";
+    font-size: $_14px;
+    font-weight: 400; 
+}
+@mixin price {
+    color: $black;
+    font-family: "Mukta";
+    font-size: $_24px;
+    font-weight: 400; 
+}
+
+@mixin date {
+    color: $black;
+    font-family: "Mukta";
+    font-size: $_14px;
+    font-weight: 400; 
+}
+
+@mixin btn-basket {
+    color: $white;
+    font-family: "Mukta";
+    font-size: $_14px;
+    font-weight: 400; 
+}
