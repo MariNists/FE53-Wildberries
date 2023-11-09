@@ -32,7 +32,23 @@
     object-fit: cover;
 }
 
-// .swiper {
-//     margin-left: auto;
-//     margin-right: auto;
-// }
+.swiper-pagination-bullet {
+    background-color: #FFFFFF !important;
+    opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #fff !important;
+    opacity: 1 !important;
+}
+
+.swiper-button-next {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+
+}
+
+.swiper-button-prev {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+}
