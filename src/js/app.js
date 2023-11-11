@@ -1,5 +1,6 @@
 import { swiper } from "./slider";
 
+
 const cardsWrapper = document.querySelector('.products__cards-wrapper');
 
 async function getArr() {
@@ -34,4 +35,7 @@ getArr();
 
 
 
+
+
+const bootstrap = require('bootstrap');
 
