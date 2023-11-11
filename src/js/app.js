@@ -18,7 +18,7 @@ async function getArr() {
                 <img src="${card[key].image}" alt="#">
                 <button class="products__show">Быстрый просмотр</button>
                 <span class="products__sale">${card[key].sale}</span>
-                <button class="btn-style">Добавить в карзину</button>
+                <button class="btn-style">Добавить в корзину</button>
             </div>
             <div class="products__discription">
                 <span class="products__price">${card[key].price}₽<span class="products__old-price">${card[key].oldPrice}</span></span>
