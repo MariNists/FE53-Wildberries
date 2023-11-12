@@ -12,8 +12,40 @@
 <body>
     <header class="header">
         <div class="header__container">
-            <div class="header__logo">
-                <span class="header__logo-text">wildberries</span>
+
+                <div class="header__logo">
+                    <span class="header__logo-text">wildberries</span>
+                </div>
+                <div class="header__search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input class="header__search-input" type="text" placeholder="Найти товары">
+                </div>
+
+                <div class="header__basket">
+                    <button class="header__basket-button" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <i class="fa-solid fa-basket-shopping"></i>Корзина
+                    </button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Корзина покупок</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Товар
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="header__search">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -32,8 +64,8 @@
         <div class="container">
             <div class="swiper swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="./img/slide-1.png" alt=""></div>
-                    <div class="swiper-slide"><img src="./img/slide-2.png" alt=""></div>
+                    <div class="swiper-slide" ><img src="./img/slide-1.png" alt=""></div>
+                    <div class="swiper-slide" ><img src="./img/slide-2.png" alt=""></div>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -45,75 +77,12 @@
     <main class="products">
         <div class="container">
             <ul class="products__cards-wrapper">
-                <li class="products__cards-item">
-                    <div class="products__cards-image">
-                        <img src="./img/1 product.webp" alt="#">
-                        <button class="products__show">Быстрый просмотр</button>
-                        <span class="products__sale">-10%</span>
-                        <button class="btn-style">Добавить в корзину</button>
-                    </div>
-                    <div class="products__discription">
-                        <span class="products__price">453 ₽<span class="products__old-price">510 ₽</span></span>
-                        <span class="products__names">Charger <span>/ Зарядное устройство</span></span>
-                        <span class="products__rating"><i class="fa-solid fa-star"></i>4.7</span>
-                    </div>
-                </li>
-                <li class="products__cards-item">
-                    <div class="products__cards-image">
-                        <img src="./img/1 product.webp" alt="#">
-                        <button class="products__show">Быстрый просмотр</button>
-                        <span class="products__sale">-10%</span>
-                        <button class="btn-style">Добавить в корзину</button>
-                    </div>
-                    <div class="products__discription">
-                        <span class="products__price">453 ₽<span class="products__old-price">510 ₽</span></span>
-                        <span class="products__names">Charger <span>/ Зарядное устройство</span></span>
-                        <span class="products__rating"><i class="fa-solid fa-star"></i>4.7</span>
-                    </div>
-                </li>
-                <li class="products__cards-item">
-                    <div class="products__cards-image">
-                        <img src="./img/1 product.webp" alt="#">
-                        <button class="products__show">Быстрый просмотр</button>
-                        <span class="products__sale">-10%</span>
-                        <button class="btn-style">Добавить в корзину</button>
-                    </div>
-                    <div class="products__discription">
-                        <span class="products__price">453 ₽<span class="products__old-price">510 ₽</span></span>
-                        <span class="products__names">Charger <span>/ Зарядное устройство</span></span>
-                        <span class="products__rating"><i class="fa-solid fa-star"></i>4.7</span>
-                    </div>
-                </li>
-                <li class="products__cards-item">
-                    <div class="products__cards-image">
-                        <img src="./img/1 product.webp" alt="#">
-                        <button class="products__show">Быстрый просмотр</button>
-                        <span class="products__sale">-10%</span>
-                        <button class="btn-style">Добавить в корзину</button>
-                    </div>
-                    <div class="products__discription">
-                        <span class="products__price">453 ₽<span class="products__old-price">510 ₽</span></span>
-                        <span class="products__names">Charger <span>/ Зарядное устройство</span></span>
-                        <span class="products__rating"><i class="fa-solid fa-star"></i>4.7</span>
-                    </div>
-                </li>
-                <li class="products__cards-item">
-                    <div class="products__cards-image">
-                        <img src="./img/1 product.webp" alt="#">
-                        <button class="products__show">Быстрый просмотр</button>
-                        <span class="products__sale">-10%</span>
-                        <button class="btn-style">Добавить в корзину</button>
-                    </div>
-                    <div class="products__discription">
-                        <span class="products__price">453 ₽<span class="products__old-price">510 ₽</span></span>
-                        <span class="products__names">Charger <span>/ Зарядное устройство</span></span>
-                        <span class="products__rating"><i class="fa-solid fa-star"></i>4.7</span>
-                    </div>
-                </li>
+
             </ul>
         </div>
     </main>
 
     <script type="module" src="./js/app.js"></script>
 </body>
+
 </html>
