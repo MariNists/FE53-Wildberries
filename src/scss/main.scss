@@ -1,14 +1,15 @@
 .products {
     padding: 10px 0;
     &__cards-wrapper {
-        
+        padding: 0;
+        margin: 0;
     }
 
     &__cards-item {
         border-radius: 10px;
         padding: 10px;
         display: inline-block;
-        width: 260px;
+        width: 265px;
         &:hover {
             background-color: rgb(233, 227, 227);
         }
