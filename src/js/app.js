@@ -1,4 +1,5 @@
 import { swiper } from "./slider";
+import "./search";
 
 
 const cardsWrapper = document.querySelector('.products__cards-wrapper');
