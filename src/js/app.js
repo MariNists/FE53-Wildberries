@@ -6,7 +6,7 @@ const cardsWrapper = document.querySelector('.products__cards-wrapper');
 async function getArr() {
     let response = await fetch('https://654d30da77200d6ba85a1e5c.mockapi.io/card');
     let card = await response.json();
-    card = card.slice(0, 10);
+    // card = card.slice(0, 10);
     
     let key;
 
@@ -15,7 +15,7 @@ async function getArr() {
         cardsWrapper.innerHTML += `
         <li class="products__cards-item" id="${card[key].id}">
             <div class="products__cards-image">
-                <img src="${card[key].image}" alt="#">
+                <img class="picture" src="${card[key].image}" alt="#">
                 <button type="button" class='products__show'>Быстрый просмотр</button>
                 <span class="products__sale">${card[key].sale}</span>
             </div>
@@ -29,22 +29,19 @@ async function getArr() {
         `
     };
 
+    // let cardsItem = cardsWrapper.getElementsByClassName('products__cards-item');
+    // let btnAdd = document.getElementsByClassName('btn-style');
+
+    // console.log(cardsItem[0].id);
+    // console.log(btnAdd[0].id);
+
     let cloneCard = [];
 
-    let objFor = {
-        id: card[key].id,
-        nameCard: card[key].nameCard,
-        rusNameCard: card[key].rusNameCard,
-        image: card[key].image,
-        rating: card[key].rating,
-        sale: card[key].sale,
-        price: card[key].price,
-        oldPrice: card[key].oldPrice,
-    };
+    let objFor = card;
 
     cardsWrapper.addEventListener('click', (event) => {
 
-        console.log(event.target);
+        // console.log(event.target); 
 
         cloneCard.push(objFor);
 
