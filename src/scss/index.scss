@@ -13,11 +13,17 @@
 @import "../scss/advertising.scss";
 @import "../scss/main.scss";
 @import "../scss/slider.scss";
+@import "../scss/footer.scss"; 
 @import "bootstrap/scss/bootstrap";
 @import "../scss/basket.scss";
 
 html {
     font-family: "Mukta", sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 .container {
     max-width: 1400px;
