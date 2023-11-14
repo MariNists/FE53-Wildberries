@@ -35,17 +35,10 @@ async function getArr() {
         </li>
         `
     };
-
-    // let btnAdd = document.getElementsByClassName('btn-style');
-
-    let arr = [];
-
     // ОБРАБОТЧИК СОБЫТИЙ
     cardsWrapper.addEventListener('click', (event) => {
-
         let cardId = event.target.getAttribute('id');
         console.log(cardId);
-
         const targetCard = cards.find((item) => item.id === cardId);
         console.log(targetCard);
         const goodsFromLs = localStorage.getItem("goods");
@@ -57,10 +50,7 @@ async function getArr() {
             parsedGoodsFromLs = [...parsedGoodsFromLs, targetCard];
             localStorage.setItem('goods', JSON.stringify(parsedGoodsFromLs));
         }
-
     });
-
-
     // МОДАЛЬНОЕ ОКНО
     const btns = document.querySelectorAll('.products__show');
     const modalOverlay = document.querySelector('.modal-overlay');
