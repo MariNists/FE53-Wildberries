@@ -37,21 +37,82 @@ async function getArr() {
 // ОБРАБОТЧИК СОБЫТИЙ
     cardsWrapper.addEventListener('click', (event) => {
 
+        let NumObj = event.target.getAttribute('id');
+        console.log(NumObj);
 
-        if (event.target) {
+
+        if (NumObj == 1) {
             let objFor = {
-                id: `${key.id}`,
-                image: `${key.image}`,
-                nameCard: `${key.nameCard}`,
-                rusNameCard: `${key.rusNameCard}`,
-                price: `${key.price}`,
-            };
+                id: card[0],
+            }
             arr.push(objFor);
         };
 
-        if (event.target) {
-            saveToLocalStorage();
+        if (NumObj == 2) {
+            let objFor = {
+                id: card[1],
+            }
+            arr.push(objFor);
         };
+
+        if (NumObj == 3) {
+            let objFor = {
+                id: card[2],
+            }
+            arr.push(objFor);
+        };
+
+        if (NumObj == 4) {
+            let objFor = {
+                id: card[3],
+            }
+            arr.push(objFor);
+        };
+
+        if (NumObj == 5) {
+            let objFor = {
+                id: card[4],
+            }
+            arr.push(objFor);
+        };
+
+        if (NumObj == 6) {
+            let objFor = {
+                id: card[5],
+            }
+            arr.push(objFor);
+        };
+
+        if (NumObj == 7) {
+            let objFor = {
+                id: card[6],
+            }
+            arr.push(objFor);
+        };
+
+        if (NumObj == 8) {
+            let objFor = {
+                id: card[7],
+            }
+            arr.push(objFor);
+        };
+
+        if (NumObj == 9) {
+            let objFor = {
+                id: card[8],
+            }
+            arr.push(objFor);
+        };
+
+        if (NumObj == 10) {
+            let objFor = {
+                id: card[9],
+            }
+            arr.push(objFor);
+        };
+
+
+        saveToLocalStorage();
     });
 
     function saveToLocalStorage() {
