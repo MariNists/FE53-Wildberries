@@ -19,9 +19,8 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input class="header__search-input" type="text" placeholder="Найти товары">
                 </div>
-
                 <div class="header__basket">
-                    <button class="header__basket-button" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button class="header__basket-button" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="busketButton">
                         <i class="fa-solid fa-basket-shopping"></i>Корзина
                     </button>
                 </div>
@@ -35,12 +34,11 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                Товар
+                            <div class="modal-body">   
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Understood</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Очистить корзину</button>
+                                <button type="button" class="btn btn-primary">Купить</button>
                             </div>
                         </div>
                     </div>
@@ -48,7 +46,6 @@
         </div>
         </div>
     </header>
-
     <section class="slider">
         <div class="container">
             <div class="swiper swiper-container">
@@ -62,7 +59,6 @@
             </div>
         </div>
     </section>
-
     <main class="products">
         <div class="container">
             <ul class="products__cards-wrapper">

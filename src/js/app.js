@@ -1,17 +1,22 @@
-import { swiper } from "./slider";
+import {
+    swiper
+} from "./slider";
 import "./search";
+import "./goodsBasket";
+import {
+    showGoods
+} from "./goodsBasket";
 
 
 const cardsWrapper = document.querySelector('.products__cards-wrapper');
-
 async function getArr() {
     let response = await fetch('https://654d30da77200d6ba85a1e5c.mockapi.io/card');
-    let card = await response.json();
-    card = card.slice(0, 10);
+    let cards = await response.json();
+    cards = cards.slice(0, 10);
 
     let key;
 
-    for (key of card) {
+    for (key of cards) {
 
         cardsWrapper.innerHTML += `
         <li class="products__cards-item" id="${key.id}">
@@ -29,99 +34,26 @@ async function getArr() {
         </li>
         `
     };
-
-    let btnAdd = document.getElementsByClassName('btn-style');
-
-    let arr = [];
-
-// ОБРАБОТЧИК СОБЫТИЙ
+    // ОБРАБОТЧИК СОБЫТИЙ
     cardsWrapper.addEventListener('click', (event) => {
-
-        let NumObj = event.target.getAttribute('id');
-        console.log(NumObj);
-
-
-        if (NumObj == 1) {
-            let objFor = {
-                id: card[0],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 2) {
-            let objFor = {
-                id: card[1],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 3) {
-            let objFor = {
-                id: card[2],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 4) {
-            let objFor = {
-                id: card[3],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 5) {
-            let objFor = {
-                id: card[4],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 6) {
-            let objFor = {
-                id: card[5],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 7) {
-            let objFor = {
-                id: card[6],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 8) {
-            let objFor = {
-                id: card[7],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 9) {
-            let objFor = {
-                id: card[8],
-            }
-            arr.push(objFor);
-        };
-
-        if (NumObj == 10) {
-            let objFor = {
-                id: card[9],
-            }
-            arr.push(objFor);
-        };
-
-
-        saveToLocalStorage();
+        let cardId = event.target.getAttribute('id');
+        console.log(cardId);
+        const targetCard = cards.find((item) => item.id === cardId);
+        console.log(targetCard);
+        const goodsFromLs = localStorage.getItem("goods");
+        console.log("goodsFromLs", goodsFromLs);
+        if (goodsFromLs === null || goodsFromLs === JSON.stringify([])) {
+            localStorage.setItem("goods", JSON.stringify([targetCard]));
+        } else {
+            let parsedGoodsFromLs = JSON.parse(goodsFromLs);
+            parsedGoodsFromLs = [...parsedGoodsFromLs, targetCard];
+            localStorage.setItem('goods', JSON.stringify(parsedGoodsFromLs));
+        }
     });
 
-    function saveToLocalStorage() {
-        localStorage.setItem('cards', JSON.stringify(arr));
-    };
 
 
-
-// МОДАЛЬНОЕ ОКНО
+    // МОДАЛЬНОЕ ОКНО
     const btns = document.querySelectorAll('.products__show');
     const modalOverlay = document.querySelector('.modal-overlay');
     const modals = document.querySelectorAll('.modal-D');
@@ -154,8 +86,7 @@ async function getArr() {
 
 getArr();
 
-
-
-
 const bootstrap = require('bootstrap');
-
+const busketButton = document.getElementById("busketButton");
+busketButton.addEventListener("click", showGoods);
+console.log(busketButton);
