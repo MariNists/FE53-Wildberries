@@ -9,7 +9,6 @@ import {
 
 
 const cardsWrapper = document.querySelector('.products__cards-wrapper');
-
 async function getArr() {
     let response = await fetch('https://654d30da77200d6ba85a1e5c.mockapi.io/card');
     let cards = await response.json();
@@ -51,6 +50,9 @@ async function getArr() {
             localStorage.setItem('goods', JSON.stringify(parsedGoodsFromLs));
         }
     });
+
+
+
     // МОДАЛЬНОЕ ОКНО
     const btns = document.querySelectorAll('.products__show');
     const modalOverlay = document.querySelector('.modal-overlay');
