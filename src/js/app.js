@@ -1,5 +1,7 @@
 import { swiper } from "./slider";
 import "./search";
+import "./goodsBasket";
+import {showGoods} from "./goodsBasket";
 
 
 const cardsWrapper = document.querySelector('.products__cards-wrapper');
@@ -56,12 +58,9 @@ async function getArr() {
     };
 };
 
-
-
 getArr();
 
-
-
-
 const bootstrap = require('bootstrap');
-
+const busketButton = document.getElementById("busketButton");
+busketButton.addEventListener("click", showGoods);
+console.log(busketButton);
