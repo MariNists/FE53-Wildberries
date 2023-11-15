@@ -6,16 +6,16 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         @media (max-width: 1310px) {
-            grid-template-columns: 25% 25% 25% 25% ;
+            grid-template-columns: 1fr 1fr 1fr 1fr ;
         }
         @media (max-width: 1070px) {
-            grid-template-columns: 33% 33% 33% ;
+            grid-template-columns: 1fr 1fr 1fr ;
         }
         @media (max-width: 800px) {
-            grid-template-columns: 50% 50%  ;
+            grid-template-columns: 1fr 1fr  ;
         }
         @media (max-width: 600px) {
-            grid-template-columns: 100%  ;
+            grid-template-columns: 1fr  ;
         }
     }
 
