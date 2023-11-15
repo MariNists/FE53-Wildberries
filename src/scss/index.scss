@@ -15,7 +15,11 @@
 @import "../scss/slider.scss";
 @import "../scss/footer.scss"; 
 @import "bootstrap/scss/bootstrap";
+
+@import "./adaptive.scss";
+
 @import "../scss/basket.scss";
+
 
 html {
     font-family: "Mukta", sans-serif;
