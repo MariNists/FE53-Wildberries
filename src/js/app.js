@@ -9,6 +9,7 @@ import {
 
 
 const cardsWrapper = document.querySelector('.products__cards-wrapper');
+
 async function getArr() {
     let response = await fetch('https://654d30da77200d6ba85a1e5c.mockapi.io/card');
     let cards = await response.json();
@@ -18,8 +19,9 @@ async function getArr() {
 
     for (key of cards) {
 
+       
         cardsWrapper.innerHTML += `
-        <li class="products__cards-item" id="${key.id}">
+        <li class="products__cards-item" >
             <div class="products__cards-image">
                 <img class="picture" src="${key.image}" alt="#">
                 <button type="button" id="${key.id}" class="products__show" data-path="form-popup">Быстрый просмотр</button>
@@ -50,8 +52,6 @@ async function getArr() {
             localStorage.setItem('goods', JSON.stringify(parsedGoodsFromLs));
         }
     });
-
-
 
     // МОДАЛЬНОЕ ОКНО
     const btns = document.querySelectorAll('.products__show');
