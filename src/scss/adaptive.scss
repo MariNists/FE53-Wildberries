@@ -1,0 +1,151 @@
+//Iphone 14Pro max Adaptive 
+@media (max-width:431px){
+    .header__search-input {
+        letter-spacing: -.3px;
+        border-radius: 19px;
+        width: 120px;
+        height: 60px;
+        padding: 0 30px 4px 61px;
+        font-size: 1rem;
+    }
+    .header{
+        &__container{
+            max-width: 100%;
+            margin: auto;
+            padding: 0 16px;
+            padding: 20px 0 20px 0;
+            position: relative;
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+        &__logo{
+            display: none;
+
+        }
+    
+        &__wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent;
+        }
+    
+        &__search{
+            position: relative;
+            margin-left: 5px;
+            &-input{
+                border-radius: 19px;
+                font-size: $_14px;
+                height: 40px;
+                letter-spacing: -.3px;
+                border-radius: 19px;
+            padding-bottom: 4px;
+            padding-left: 41px;
+            width: 100%;
+            }
+            .fa-magnifying-glass{
+            top: 50%;
+            left: 20px; 
+            transform: translateY(-50%);
+            text-align: center;
+            }       
+        }
+    
+        &__basket{margin-left: 0px;
+            &-button{
+                width: 100px;
+                height: 40px;
+                border: solid white;
+                border-radius: 19px;
+                background-color: transparent;
+                color: #fff;
+                padding: 0px 0px; 
+                font-size:$_14px;
+                text-align: center;
+                margin-right: 15px;
+            }
+        }
+        } 
+    }
+
+
+
+
+
+
+//Ipad Air Tablet Adaptive
+@media (max-width:820px){
+    .container {
+        max-width: 820px;
+    }
+    .header__search-input {
+        width: 200px;
+        height: 60px;
+        padding: 0 30px 4px 61px;
+        font-size: 1rem;
+    }
+    .header{
+
+        &__logo{
+            color: $white;
+            font-family: "Mukta";
+            font-size: $_30px;
+            font-weight: 400; 
+            margin: 0px 0 0 25;
+        }
+        &__wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent;
+        }
+        &__search{
+            position: relative;
+            margin-left: 5px;
+            &-input{
+                border-radius: 19px;
+                font-size: $_14px;
+                height: 40px;
+                letter-spacing: -.3px;
+                font-size: $_14px;
+                height: 40px;
+                letter-spacing: -.3px;
+            padding-bottom: 4px;
+            padding-left: 41px;
+            width: 100%;
+                
+            }
+            .fa-magnifying-glass{
+                position: absolute;
+                top: 50%;
+                left: 20px; 
+                transform: translateY(-50%);
+                text-align: center;
+            }      
+        }
+        &__basket{margin-left: 0px;
+            &-button{
+                width: 100px;
+                height: 40px;
+                border: solid white;
+                border-radius: 19px;
+                background-color: transparent; /* Прозрачный фон */
+                color: #fff;
+                padding: 0px 0px; 
+                cursor: pointer; 
+                font-size:$_14px;
+                text-align: center;
+                margin-right: 15px;
+            }
+        }
+        }
+}
+
+
+
+
+
+
+
+
+
