@@ -1,11 +1,15 @@
 export function showGoods() {
+    console.log("showgoods");
     const modalBody = document.querySelector(".modal-body");
     modalBody.innerHTML = "";
 
     const goodsFromLs = localStorage.getItem("goods");
-    const cardsFromLs = JSON.parse(goodsFromLs);
+    const cardsFromLs = JSON.parse(goodsFromLs) || [];
+    let goodsSum = 0;
 
     cardsFromLs.forEach((item) => {
+        goodsSum += item.price;
+
         const id = `${item.id}-basketRemove`;
 
         const goodsWrapp = document.createElement('div');
@@ -26,11 +30,24 @@ export function showGoods() {
         const delBtn = document.createElement("button");
         delBtn.classList.add("delBtn");
 
-        delBtn.addEventListener("click", () => removeCard(id));
+        delBtn.addEventListener("click", () => removeCard(id, item.id));
         goodsPrise.append(delBtn);
         delBtn.textContent = "X";
-
     });
+
+    const total = document.createElement('div');
+    total.classList.add("total");
+    modalBody.append(total);
+    total.textContent = `Итого: ${goodsSum}`;
+
+    // const deleteBtn = document.querySelector('.btn-secondary');
+    // deleteBtn.addEventListener("click", () => removeCards());
+
+    // const deleteBtn = document.querySelector('.btn-secondary');
+    // if (sum === 0) {
+    //     deleteBtn.disabled = true;
+    // }
+
 }
 
 function removeCards() {
@@ -43,13 +60,28 @@ deleteBtn.addEventListener("click", () => removeCards());
 
 
 
-function removeCard(id) {
-    const card = document.getElementById(id);
-    console.log(card);
+function removeCard(htmlItemid, itemId) {
+    const card = document.getElementById(htmlItemid);
     card.remove();
     let arrCard = JSON.parse(localStorage.getItem('goods'));
-    const index = arrCard.find(goods => goods.id === id);
-    arrCard.splice(index, 1);
+
+    let removedItemIndex = 0;
+    const index = arrCard.forEach((goods, i) => {
+        if (goods.id === itemId) {
+            removedItemIndex = i;
+        }
+    });
+
+    arrCard.splice(removedItemIndex, 1);
     localStorage.setItem('goods', JSON.stringify(arrCard));
+    let sum = 0;
+    arrCard.forEach((item) => {
+        console.log('OOK item: ', item);
+        sum += item.price;
+
+    });
+
+    let removeTotal = document.querySelector(".total");
+    removeTotal.textContent = `Итого: ${sum}`;
 
 }
