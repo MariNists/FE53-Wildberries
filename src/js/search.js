@@ -1,39 +1,29 @@
-const mockApiUrl = "https://654d30da77200d6ba85a1e5c.mockapi.io/card";
+function setupSearch() {
+  const inputElement = document.querySelector('.header__search-input');
 
-let allProductItems; // Объявляем переменную для хранения всех элементов товаров
+  if (inputElement) {
+    let searchTerm = '';
 
-fetch(mockApiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`Ошибка при получении данных. Код ответа: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    allProductItems = data; // Сохраняем полученные данные в переменную
+    inputElement.addEventListener('input', (event) => {
+      searchTerm = event.target.value.toLowerCase();
+      const regex = new RegExp(searchTerm, 'i');
 
-    const inputElement = document.querySelector('.header__search-input');
+      // Перебор всех карточек товаров на странице
+      const allProductItems = document.querySelectorAll('.products__cards-item');
 
-    if (inputElement) {
-      let searchTerm = '';
+      allProductItems.forEach(productItem => {
+        // Получение текстового содержимого (названия) товара
+        const productName = productItem.querySelector('.products__names').textContent.toLowerCase();
 
-      inputElement.addEventListener('input', (event) => {
-        searchTerm = event.target.value.toLowerCase();
-        const regex = new RegExp(searchTerm, 'i');
-
-        // Перебираем все товары, полученные из API
-        allProductItems.forEach(productItem => {
-          // Получение текстового содержимого (названия) товара
-          const productName = productItem.rusNameCard.toLowerCase();
-
-          const productElement = document.getElementById(productItem.id);
-
-          if (regex.test(productName)) {
-            productElement.style.display = 'inline-block';
-          } else {
-            productElement.style.display = 'none';
-          }
-        });
+        if (regex.test(productName)) {
+          productItem.style.display = 'inline-block';
+        } else {
+          productItem.style.display = 'none';
+        }
       });
-    }
-  });
+    });
+  }
+}
+
+// Вызываем функцию для настройки поиска
+setupSearch();
