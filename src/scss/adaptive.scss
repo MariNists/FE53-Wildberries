@@ -142,9 +142,6 @@
         }
         }
 }
-    .products__cards-item {
-            margin-left: 60px;
-}
 
 
 
@@ -153,16 +150,4 @@
 
 
 
-@media (min-width: 571px) and (max-width: 707px) {
-    .products__cards-item {
-        margin-left: 150px;
-}
-.products__cards-image {
-margin-left: auto;
 
-  }}
-  @media (min-width: 320px) and (max-width: 571px) {
-    .products__cards-item li{
-    margin-left: calc();
-    }
-  }
