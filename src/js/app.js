@@ -22,33 +22,41 @@ async function getArr() {
         <li class="products__cards-item" id="${key.id}">
             <div class="products__cards-image">
                 <img class="picture" src="${key.image}" alt="#">
-                <button type="button" id="${key.id}" class="products__show" data-path="form-popup">Быстрый просмотр</button>
+                <button type="button" id="key${key.id}" class="products__show" data-path="form-popup">Быстрый просмотр</button>
                 <span class="products__sale">${key.sale}</span>
             </div>
             <div class="products__discription">
                 <span class="products__price">${key.price}₽<span class="products__old-price">${key.oldPrice}</span></span>
                 <span class="products__names">${key.nameCard}<span> / ${key.rusNameCard}</span></span>
                 <span class="products__rating"><i class="fa-solid fa-star"></i>${key.rating}</span>
-                <button class="btn-style" id="${key.id}">Добавить в корзину</button>
+                <button class="btn-style" id="index${key.id}">Добавить в корзину</button>
             </div>
         </li>
         `
     };
+
+    const btnAdd = document.querySelectorAll('.btn-style');
+    // btnAdd.getAttribute('id');
+    console.log(btnAdd);
+    
+
     // ОБРАБОТЧИК СОБЫТИЙ
-    cardsWrapper.addEventListener('click', (event) => {
-        let cardId = event.target.getAttribute('id');
-
-        const targetCard = cards.find((item) => item.id === cardId);
-
-        const goodsFromLs = localStorage.getItem("goods");
-
-        if (goodsFromLs === null || goodsFromLs === JSON.stringify([])) {
-            localStorage.setItem("goods", JSON.stringify([targetCard]));
-        } else {
-            let parsedGoodsFromLs = JSON.parse(goodsFromLs);
-            parsedGoodsFromLs = [...parsedGoodsFromLs, targetCard];
-            localStorage.setItem('goods', JSON.stringify(parsedGoodsFromLs));
-        }
+    btnAdd.forEach((point) => {
+        point.addEventListener('click', (event) => {
+            let cardId = event.target.getAttribute('id');
+    
+            const targetCard = cards.find((item) => 'index' + item.id === cardId);
+    
+            const goodsFromLs = localStorage.getItem("goods");
+    
+            if (goodsFromLs === null || goodsFromLs === JSON.stringify([])) {
+                localStorage.setItem("goods", JSON.stringify([targetCard]));
+            } else {
+                let parsedGoodsFromLs = JSON.parse(goodsFromLs);
+                parsedGoodsFromLs = [...parsedGoodsFromLs, targetCard];
+                localStorage.setItem('goods', JSON.stringify(parsedGoodsFromLs));
+            }
+        });
     });
 
 
@@ -68,7 +76,7 @@ async function getArr() {
 
             let imgId = e.target.getAttribute('id');
             const targetImg = cards.find((item) => {
-                if (item.id === imgId) {
+                if ('key' + item.id === imgId) {
                     bigImg.src = item.image;
                 };
             });
