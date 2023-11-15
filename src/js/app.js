@@ -22,7 +22,7 @@ async function getArr() {
         <li class="products__cards-item" id="${key.id}">
             <div class="products__cards-image">
                 <img class="picture" src="${key.image}" alt="#">
-                <button type="button" class="products__show" data-path="form-popup">Быстрый просмотр</button>
+                <button type="button" id="${key.id}" class="products__show" data-path="form-popup">Быстрый просмотр</button>
                 <span class="products__sale">${key.sale}</span>
             </div>
             <div class="products__discription">
@@ -37,11 +37,11 @@ async function getArr() {
     // ОБРАБОТЧИК СОБЫТИЙ
     cardsWrapper.addEventListener('click', (event) => {
         let cardId = event.target.getAttribute('id');
-        console.log(cardId);
+
         const targetCard = cards.find((item) => item.id === cardId);
-        console.log(targetCard);
+
         const goodsFromLs = localStorage.getItem("goods");
-        console.log("goodsFromLs", goodsFromLs);
+
         if (goodsFromLs === null || goodsFromLs === JSON.stringify([])) {
             localStorage.setItem("goods", JSON.stringify([targetCard]));
         } else {
@@ -57,11 +57,25 @@ async function getArr() {
     const btns = document.querySelectorAll('.products__show');
     const modalOverlay = document.querySelector('.modal-overlay');
     const modals = document.querySelectorAll('.modal-D');
+    const modalVisible = document.getElementById('visible');
+
+    let bigImg = document.createElement('img');
+    bigImg.className = 'modalImg';
+    bigImg.alt = '#'
 
     btns.forEach((el) => {
         el.addEventListener('click', (e) => {
+
+            let imgId = e.target.getAttribute('id');
+            const targetImg = cards.find((item) => {
+                if (item.id === imgId) {
+                    bigImg.src = item.image;
+                };
+            });
+
+            modalVisible.append(bigImg);
+
             let path = e.target.getAttribute('data-path');
-            console.log(path);
 
             modals.forEach((el) => {
                 el.classList.remove('modal--visible');
@@ -79,6 +93,7 @@ async function getArr() {
             modals.forEach((el) => {
                 el.classList.remove('modal--visible');
             });
+
         };
     });
 };
@@ -89,4 +104,4 @@ getArr();
 const bootstrap = require('bootstrap');
 const busketButton = document.getElementById("busketButton");
 busketButton.addEventListener("click", showGoods);
-console.log(busketButton);
+// console.log(busketButton);
