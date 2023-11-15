@@ -1,67 +1,92 @@
-import { swiper } from "./slider";
+import {
+    swiper
+} from "./slider";
 import "./search";
+import "./goodsBasket";
+import {
+    showGoods
+} from "./goodsBasket";
 
 
 const cardsWrapper = document.querySelector('.products__cards-wrapper');
-
 async function getArr() {
     let response = await fetch('https://654d30da77200d6ba85a1e5c.mockapi.io/card');
-    let card = await response.json();
-    // card = card.slice(0, 10);
-    
+    let cards = await response.json();
+    cards = cards.slice(0, 10);
+
     let key;
 
-    for (key in card) {
+    for (key of cards) {
 
         cardsWrapper.innerHTML += `
-        <li class="products__cards-item" id="${card[key].id}">
+        <li class="products__cards-item" id="${key.id}">
             <div class="products__cards-image">
-                <img class="picture" src="${card[key].image}" alt="#">
-                <button type="button" class='products__show'>Быстрый просмотр</button>
-                <span class="products__sale">${card[key].sale}</span>
+                <img class="picture" src="${key.image}" alt="#">
+                <button type="button" class="products__show" data-path="form-popup">Быстрый просмотр</button>
+                <span class="products__sale">${key.sale}</span>
             </div>
             <div class="products__discription">
-                <span class="products__price">${card[key].price}₽<span class="products__old-price">${card[key].oldPrice}</span></span>
-                <span class="products__names">${card[key].nameCard}<span> / ${card[key].rusNameCard}</span></span>
-                <span class="products__rating"><i class="fa-solid fa-star"></i>${card[key].rating}</span>
-                <button class="btn-style" id="${card[key].id}">Добавить в корзину</button>
+                <span class="products__price">${key.price}₽<span class="products__old-price">${key.oldPrice}</span></span>
+                <span class="products__names">${key.nameCard}<span> / ${key.rusNameCard}</span></span>
+                <span class="products__rating"><i class="fa-solid fa-star"></i>${key.rating}</span>
+                <button class="btn-style" id="${key.id}">Добавить в корзину</button>
             </div>
         </li>
         `
     };
-
-    // let cardsItem = cardsWrapper.getElementsByClassName('products__cards-item');
-    // let btnAdd = document.getElementsByClassName('btn-style');
-
-    // console.log(cardsItem[0].id);
-    // console.log(btnAdd[0].id);
-
-    let cloneCard = [];
-
-    let objFor = card;
-
+    // ОБРАБОТЧИК СОБЫТИЙ
     cardsWrapper.addEventListener('click', (event) => {
-
-        // console.log(event.target); 
-
-        cloneCard.push(objFor);
-
-        if (event.target) {
-            saveToLocalStorage();
-        };
+        let cardId = event.target.getAttribute('id');
+        console.log(cardId);
+        const targetCard = cards.find((item) => item.id === cardId);
+        console.log(targetCard);
+        const goodsFromLs = localStorage.getItem("goods");
+        console.log("goodsFromLs", goodsFromLs);
+        if (goodsFromLs === null || goodsFromLs === JSON.stringify([])) {
+            localStorage.setItem("goods", JSON.stringify([targetCard]));
+        } else {
+            let parsedGoodsFromLs = JSON.parse(goodsFromLs);
+            parsedGoodsFromLs = [...parsedGoodsFromLs, targetCard];
+            localStorage.setItem('goods', JSON.stringify(parsedGoodsFromLs));
+        }
     });
 
-    function saveToLocalStorage() {
-        localStorage.setItem('cards', JSON.stringify(cloneCard));
-    };
-};
 
+
+    // МОДАЛЬНОЕ ОКНО
+    const btns = document.querySelectorAll('.products__show');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modals = document.querySelectorAll('.modal-D');
+
+    btns.forEach((el) => {
+        el.addEventListener('click', (e) => {
+            let path = e.target.getAttribute('data-path');
+            console.log(path);
+
+            modals.forEach((el) => {
+                el.classList.remove('modal--visible');
+            });
+
+            document.querySelector(`[data-target="${path}"]`).classList.toggle('modal--visible');
+            modalOverlay.classList.add('modal-overlay--visible');
+        });
+    });
+
+    modalOverlay.addEventListener('click', (e) => {
+
+        if (e.target == modalOverlay) {
+            modalOverlay.classList.remove('modal-overlay--visible');
+            modals.forEach((el) => {
+                el.classList.remove('modal--visible');
+            });
+        };
+    });
+};
 
 
 getArr();
 
-
-
-
 const bootstrap = require('bootstrap');
-
+const busketButton = document.getElementById("busketButton");
+busketButton.addEventListener("click", showGoods);
+console.log(busketButton);
